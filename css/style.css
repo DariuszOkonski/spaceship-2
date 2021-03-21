@@ -1,5 +1,9 @@
 :root {
     --primary-color: #09fcfd;
+    --size-unit: 64px;
+    --ships-animation-time: 200ms;
+    --explosions-animation-time: 600ms;
+
 }
 
 *, *::after, *::before {
@@ -19,6 +23,8 @@ body {
     height: 100vh;
     background-color: #000;
     background-image: url('/images/background.jpg');
+    background-position-y: 0vh;
+    animation: move-bg 60s linear infinite;
 }
 
 .information {
@@ -27,9 +33,7 @@ body {
     left: 0;
     right: 0;
     z-index: 2;
-
     color: #fff;
-    background-color: gray;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -85,11 +89,118 @@ body {
 }
 
 .spaceship {
-    position: absolute;
-    top: 250px;
-    left: 250px;
+    width: calc(var(--size-unit));
+    height: calc(var(--size-unit));
+    background-image: url('../images/ship.png');
+    background-repeat: no-repeat;
+    background-position-x: 0px;
+    background-position-y: 0px;
+    animation: move-8-units-X var(--ships-animation-time) steps(8) infinite;
+}
 
-    width: 50px;
-    height: 50px;
-    background-color: red;
+.enemy {
+    width: calc(var(--size-unit));
+    height: calc(var(--size-unit));
+    background-image: url('../images/enemy.png');
+    background-repeat: no-repeat;
+    background-position-x: 0px;
+    background-position-y: 0px;
+    animation: move-5-units-X var(--ships-animation-time) steps(5) infinite;
+}
+
+.enemy--big {
+    width: calc(var(--size-unit) * 2);
+    height: calc(var(--size-unit) * 2);
+    background-image: url('../images/enemy-big.png');
+    background-repeat: no-repeat;
+    background-position-x: 0px;
+    background-position-y: 0px;
+    animation: move-16-units-X var(--ships-animation-time) steps(8) infinite;
+}
+
+.explosion {
+    width: calc(var(--size-unit));
+    height: calc(var(--size-unit));
+    background-image: url('../images/explosion.png');
+    background-repeat: no-repeat;
+    background-position-x: 0px;
+    background-position-y: 0px;
+    animation: move-17-units-X var(--explosions-animation-time) steps(17) infinite;
+}
+
+.explosion--big {
+    width: calc(var(--size-unit) * 2);
+    height: calc(var(--size-unit) * 2);
+    background-image: url('../images/explosion-big.png');
+    background-repeat: no-repeat;
+    background-position-x: 0px;
+    background-position-y: 0px;
+    animation: move-34-units-X var(--explosions-animation-time) steps(17) infinite;
+}
+
+.missle {
+    background-image: url(../images/missile.png);
+    background-size: cover;
+    width: 12px;
+    height: 24px;
+}
+
+@keyframes move-5-units-X {
+    from {
+        background-position-x: 0px;
+    }
+
+    to {
+        background-position-x: calc(var(--size-unit) * -5);
+    }
+}
+
+@keyframes move-8-units-X {
+    from {
+        background-position-x: 0px;
+    }
+
+    to {
+        background-position-x: calc(var(--size-unit) * -8);
+    }
+}
+
+@keyframes move-16-units-X {
+    from {
+        background-position-x: 0px;
+    }
+
+    to {
+        background-position-x: calc(var(--size-unit) * -16);
+    }
+}
+
+@keyframes move-17-units-X {
+    from {
+        background-position-x: 0px;
+    }
+
+    to {
+        background-position-x: calc(var(--size-unit) * -17);
+    }
+}
+
+@keyframes move-34-units-X {
+    from {
+        background-position-x: 0px;
+    }
+
+    to {
+        background-position-x: calc(var(--size-unit) * -34);
+    }
+}
+
+@keyframes move-bg {
+    from {
+        background-position-y: 0vh;
+    }
+
+    to {
+        background-position-y: 100vh;
+    }
 }
