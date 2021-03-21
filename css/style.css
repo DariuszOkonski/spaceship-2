@@ -23,8 +23,8 @@ body {
     height: 100vh;
     background-color: #000;
     background-image: url('/images/background.jpg');
-    background-position-y: 0vh;
-    animation: move-bg 60s linear infinite;
+    /* background-position-y: 0vh; */
+    animation: move-bg 40s linear infinite;
 }
 
 .information {
@@ -93,8 +93,8 @@ body {
     height: calc(var(--size-unit));
     background-image: url('../images/ship.png');
     background-repeat: no-repeat;
-    background-position-x: 0px;
-    background-position-y: 0px;
+    /* background-position-x: 0px;
+    background-position-y: 0px; */
     animation: move-8-units-X var(--ships-animation-time) steps(8) infinite;
 }
 
@@ -103,8 +103,8 @@ body {
     height: calc(var(--size-unit));
     background-image: url('../images/enemy.png');
     background-repeat: no-repeat;
-    background-position-x: 0px;
-    background-position-y: 0px;
+    /* background-position-x: 0px;
+    background-position-y: 0px; */
     animation: move-5-units-X var(--ships-animation-time) steps(5) infinite;
 }
 
@@ -113,8 +113,8 @@ body {
     height: calc(var(--size-unit) * 2);
     background-image: url('../images/enemy-big.png');
     background-repeat: no-repeat;
-    background-position-x: 0px;
-    background-position-y: 0px;
+    /* background-position-x: 0px;
+    background-position-y: 0px; */
     animation: move-16-units-X var(--ships-animation-time) steps(8) infinite;
 }
 
@@ -123,9 +123,9 @@ body {
     height: calc(var(--size-unit));
     background-image: url('../images/explosion.png');
     background-repeat: no-repeat;
-    background-position-x: 0px;
-    background-position-y: 0px;
-    animation: move-17-units-X var(--explosions-animation-time) steps(17) infinite;
+    /* background-position-x: 0px;
+    background-position-y: 0px; */
+    animation: move-17-units-X var(--explosions-animation-time) steps(17) forwards;
 }
 
 .explosion--big {
@@ -133,9 +133,9 @@ body {
     height: calc(var(--size-unit) * 2);
     background-image: url('../images/explosion-big.png');
     background-repeat: no-repeat;
-    background-position-x: 0px;
-    background-position-y: 0px;
-    animation: move-34-units-X var(--explosions-animation-time) steps(17) infinite;
+    /* background-position-x: 0px;
+    background-position-y: 0px; */
+    animation: move-34-units-X var(--explosions-animation-time) steps(17) forwards;
 }
 
 .missle {
