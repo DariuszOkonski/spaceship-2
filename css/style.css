@@ -97,6 +97,7 @@ body {
     /* background-position-x: 0px;
     background-position-y: 0px; */
     animation: move-8-units-X var(--ships-animation-time) steps(8) infinite;
+    z-index: 100;
 }
 
 .enemy {
@@ -140,10 +141,12 @@ body {
 }
 
 .missle {
+    position: absolute;
     background-image: url(../images/missile.png);
     background-size: cover;
     width: 12px;
     height: 24px;
+    z-index: 1;
 }
 
 @keyframes move-5-units-X {
