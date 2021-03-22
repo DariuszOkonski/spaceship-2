@@ -89,6 +89,7 @@ body {
 }
 
 .spaceship {
+    position: fixed;
     width: calc(var(--size-unit));
     height: calc(var(--size-unit));
     background-image: url('../images/ship.png');
