@@ -24,7 +24,7 @@ body {
     background-color: #000;
     background-image: url('/images/background.jpg');
     /* background-position-y: 0vh; */
-    animation: move-bg 40s linear infinite;
+    animation: move-bg 60s linear infinite;
 }
 
 .information {
