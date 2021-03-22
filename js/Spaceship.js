@@ -30,20 +30,20 @@ export class Spaceship {
     #eventListeners() {
         window.addEventListener('keydown', ({keyCode}) => {
             switch (keyCode) {
-                case 32:
-                    this.#shot()
-                    break;
                 case 37: 
-                    this.#leftArrow = true;
-                    break;
+                this.#leftArrow = true;
+                break;
                 case 39:
                     this.#rightArrow = true
                     break;
-            }
-        })
-
-        window.addEventListener('keyup', ({keyCode}) => {
-            switch (keyCode) {
+                }
+            })
+            
+            window.addEventListener('keyup', ({keyCode}) => {
+                switch (keyCode) {
+                case 32:
+                    this.#shot()
+                    break;
                 case 37: 
                     this.#leftArrow = false;
                     break;

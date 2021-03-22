@@ -16,8 +16,9 @@ class Game {
 
     #newGame() {
         this.#checkPositionInterval = setInterval(() => {
+            console.log(this.#ship.missiles)
             this.#checkPosition();
-        }, 1000);
+        }, 100);
     }
 
     #checkPosition() {
@@ -31,7 +32,8 @@ class Game {
 
 
             if(missilePosition.bottom < 0) {
-                missile.remove()
+                missile.remove();
+                missileArr.splice(missileIndex, 1);
             }
 
         })

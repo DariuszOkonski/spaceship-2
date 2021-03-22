@@ -25,6 +25,7 @@ body {
     background-image: url('/images/background.jpg');
     /* background-position-y: 0vh; */
     animation: move-bg 60s linear infinite;
+    overflow: hidden;
 }
 
 .information {
