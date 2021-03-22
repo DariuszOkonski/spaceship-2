@@ -1,9 +1,8 @@
 export class Spaceship {  
-
+    missiles = [];
     #modifier = 5;
     #leftArrow = false;
     #rightArrow = false;
-    #countIndex = 0;
 
     constructor(element) {
         this.element = element
@@ -28,12 +27,15 @@ export class Spaceship {
     #eventListeners() {
         window.addEventListener('keydown', ({keyCode}) => {
             switch (keyCode) {
+                case 32:
+                    this.#shot()
+                    break;
                 case 37: 
                     this.#leftArrow = true;
                     break;
                 case 39:
                     this.#rightArrow = true
-                    break
+                    break;
             }
         })
 
@@ -56,5 +58,11 @@ export class Spaceship {
     #gameLoop = () => {
         this.#whatKey();
         requestAnimationFrame(this.#gameLoop)
+    }
+
+    #shot(){
+        const missile = 'missle';
+        this.missiles.push(missile);
+        console.log(this.missiles)
     }
 }
