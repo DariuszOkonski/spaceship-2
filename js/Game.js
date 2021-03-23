@@ -1,4 +1,5 @@
 import { Spaceship } from './Spaceship.js';
+import { Enemy } from './Enemy.js';
 
 class Game {
     #htmlElements = {
@@ -6,8 +7,10 @@ class Game {
         container: document.querySelector('[data-container]')
     }
     #ship = new Spaceship(this.#htmlElements.spaceship, this.#htmlElements.container)    
+    #enemies = [];
+    #enemiesInterval = null;
     #checkPositionInterval = null;
-
+    #createEnemyInterval = null;
 
     init() {
         this.#ship.init();
@@ -15,10 +18,25 @@ class Game {
     }   
 
     #newGame() {
+        this.#enemiesInterval = 30;
+
+        this.#createEnemyInterval = setInterval(() => {
+            this.#createNewEnemy()
+        }, 5000);
+
         this.#checkPositionInterval = setInterval(() => {
-            console.log(this.#ship.missiles)
             this.#checkPosition();
         }, 100);
+    }
+
+    #createNewEnemy() {
+        const enemy = new Enemy(
+            this.#htmlElements.container,
+            this.#enemiesInterval,
+            'enemy',
+            )
+        enemy.init()
+        this.#enemies.push(enemy)
     }
 
     #checkPosition() {
@@ -44,5 +62,4 @@ class Game {
 window.onload = function() {
     const game = new Game();
     game.init();
-    console.log(game)
 }

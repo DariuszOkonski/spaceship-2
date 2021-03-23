@@ -102,6 +102,7 @@ body {
 }
 
 .enemy {
+    position: absolute;
     width: calc(var(--size-unit));
     height: calc(var(--size-unit));
     background-image: url('../images/enemy.png');
@@ -112,6 +113,7 @@ body {
 }
 
 .enemy--big {
+    position: absolute;
     width: calc(var(--size-unit) * 2);
     height: calc(var(--size-unit) * 2);
     background-image: url('../images/enemy-big.png');
