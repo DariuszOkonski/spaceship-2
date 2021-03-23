@@ -1,15 +1,22 @@
 export class Enemy {
-    constructor(container, intervalTime, enemyClass) {
+    constructor(container, intervalTime, enemyClass, explosionClass, lives = 1) {
         this.container = container;
         this.element = document.createElement('div');
         this.enemyClass = enemyClass
+        this.explosionClass = explosionClass
         this.interval = null;
         this.intervalTime = intervalTime
+        this.lives = lives
     }
 
     init() {
         this.#setEnemy();
         this.#updatePosition();
+    }
+
+    remove() {
+        clearInterval(this.interval)
+        this.element.remove()
     }
 
     #setEnemy() {
