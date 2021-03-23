@@ -1,5 +1,6 @@
 :root {
     --primary-color: #09fcfd;
+    --secondary-color: #510303;
     --size-unit: 64px;
     --ships-animation-time: 200ms;
     --explosions-animation-time: 600ms;
@@ -27,6 +28,10 @@ body {
     /* background-position-y: 0vh; */
     animation: move-bg 60s linear infinite;
 }
+.container.hit {
+    background-image: none;
+    background-color: var(--secondary-color);
+}
 
 .information {
     position: relative;
@@ -49,7 +54,7 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 3;
+    z-index: 999;
     display: flex;
     justify-content: center;
     align-items: center;
