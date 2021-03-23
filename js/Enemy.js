@@ -55,8 +55,8 @@ export class Enemy {
         }, animationTime);
     }
 
-    remove() {
-        clearInterval(this.interval)
-        this.element.remove()
-    }
+    // remove() {
+    //     clearInterval(this.interval)
+    //     this.element.remove()
+    // }
 }

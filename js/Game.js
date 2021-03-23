@@ -4,10 +4,14 @@ import { Enemy } from './Enemy.js';
 class Game {
     #htmlElements = {
         spaceship: document.querySelector('[data-spaceship]'),
-        container: document.querySelector('[data-container]')
+        container: document.querySelector('[data-container]'),
+        score: document.querySelector('[data-score]'),
+        lives: document.querySelector('[data-lives]')
     }
     #ship = new Spaceship(this.#htmlElements.spaceship, this.#htmlElements.container)    
     #enemies = [];
+    #lives = null;
+    #score = null;
     #enemiesInterval = null;
     #checkPositionInterval = null;
     #createEnemyInterval = null;
@@ -19,6 +23,8 @@ class Game {
 
     #newGame() {
         this.#enemiesInterval = 30;
+        this.#lives = 3;
+        this.#score = 0;
 
         this.#createEnemyInterval = setInterval(() => {
             this.#randomNewEnemy()
@@ -66,6 +72,7 @@ class Game {
             if(enemyPosition.top > window.innerHeight) {
                 enemy.explode();
                 enemiesArr.splice(enemyIndex, 1);
+                this.#updateLives();
             }
 
 
@@ -87,6 +94,7 @@ class Game {
                         }
                         missile.remove();
                         missileArr.splice(missileIndex, 1);
+                        this.#updateScore();
                     }
     
                 if(missilePosition.bottom < 0) {
@@ -98,6 +106,23 @@ class Game {
         })
 
         
+    }
+
+    #updateScore(){
+        this.#score++;
+        this.#updateScoreText();
+    };
+
+    #updateScoreText() {
+        this.#htmlElements.score.textContent = `Score: ${this.#score}`;
+    }
+
+    #updateLives(){
+        this.#lives--;
+        this.#updateLivesText();
+    };
+    #updateLivesText() {
+        this.#htmlElements.lives.textContent = `Lives: ${this.#lives}`;
     }
 
 }
