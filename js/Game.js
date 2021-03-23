@@ -22,7 +22,7 @@ class Game {
 
         this.#createEnemyInterval = setInterval(() => {
             this.#randomNewEnemy()
-        }, 1000);
+        }, 5000);
 
         this.#checkPositionInterval = setInterval(() => {
             this.#checkPosition();
@@ -64,27 +64,40 @@ class Game {
 
 
             if(enemyPosition.top > window.innerHeight) {
-                enemy.remove();
+                enemy.explode();
                 enemiesArr.splice(enemyIndex, 1);
             }
 
+
+            this.#ship.missiles.forEach((missile, missileIndex, missileArr) => {
+                const missilePosition = {
+                    top: missile.element.offsetTop,
+                    right: missile.element.offsetLeft + missile.element.offsetWidth,
+                    bottom: missile.element.offsetTop + missile.element.offsetHeight,
+                    left: missile.element.offsetLeft
+                }
+                
+                if(missilePosition.bottom >= enemyPosition.top 
+                    && missilePosition.top <= enemyPosition.bottom
+                    && missilePosition.right >= enemyPosition.left
+                    && missilePosition.left <= enemyPosition.right) {
+                        enemy.hit();
+                        if(!enemy.lives) {
+                            enemiesArr.splice(enemyIndex, 1);
+                        }
+                        missile.remove();
+                        missileArr.splice(missileIndex, 1);
+                    }
+    
+                if(missilePosition.bottom < 0) {
+                    missile.remove();
+                    missileArr.splice(missileIndex, 1);
+                }
+    
+            })
         })
 
-        this.#ship.missiles.forEach((missile, missileIndex, missileArr) => {
-            const missilePosition = {
-                top: missile.element.offsetTop,
-                right: missile.element.offsetLeft + missile.element.offsetWidth,
-                bottom: missile.element.offsetTop + missile.element.offsetHeight,
-                left: missile.element.offsetLeft
-            }
-
-
-            if(missilePosition.bottom < 0) {
-                missile.remove();
-                missileArr.splice(missileIndex, 1);
-            }
-
-        })
+        
     }
 
 }

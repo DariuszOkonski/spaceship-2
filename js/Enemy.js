@@ -14,11 +14,6 @@ export class Enemy {
         this.#updatePosition();
     }
 
-    remove() {
-        clearInterval(this.interval)
-        this.element.remove()
-    }
-
     #setEnemy() {
         this.element.classList.add(this.enemyClass);
         this.container.appendChild(this.element);
@@ -38,5 +33,30 @@ export class Enemy {
 
     #setNewPosition() {
         this.element.style.top = `${this.element.offsetTop + 1}px`;
+    }
+
+    hit() {
+        this.lives--;
+        if(!this.lives) {
+            clearInterval(this.interval)
+            this.explode()
+        }
+    }
+
+    explode() {
+        this.element.classList.remove(this.enemyClass)
+        this.element.classList.add(this.explosionClass)
+        clearInterval(this.interval)
+        const animationTime = 
+            parseInt(getComputedStyle(document.documentElement)
+            .getPropertyValue('--explosions-animation-time'), 10)
+        setTimeout(() => {
+            this.element.remove()            
+        }, animationTime);
+    }
+
+    remove() {
+        clearInterval(this.interval)
+        this.element.remove()
     }
 }
